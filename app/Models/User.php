@@ -10,33 +10,31 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    protected $table= 'users';
+    protected $primaryKey= 'id';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = [
         'name',
+        'wallet',
         'email',
         'password',
+        'role',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+//    protected $guarded=[];
+//created_at and updated_at wont be inserted by laravel
+    // public $timestamps=false;
+ // if you wanna change the name of two fields
+    //const CREATED_AT = 'registered_at';
+    //const UPDATED_AT  = 'edited_at';
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
